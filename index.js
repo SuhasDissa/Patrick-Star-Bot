@@ -245,4 +245,4 @@ bot.on("message", msg => {
   }
 });
 
-bot.login('NzI5MjMxNzg3ODA0NTkwMTUz.XwGGAA.muZlHDcc2whpCn36xYprJ_qZlN8');
+bot.login(token);

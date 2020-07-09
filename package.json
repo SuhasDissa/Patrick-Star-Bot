@@ -1,0 +1,30 @@
+{
+  "name": "discord_bot",
+  "version": "1.0.0",
+  "description": "A sample package.json",
+  "main": "node index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "10.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Suhas",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "discord.js": "^12.2.0",
+    "enmap": "^5.3.1",
+    "moment": "^2.27.0",
+    "moment-duration-format": "^2.2.2",
+    "express": "^4.17.1"
+  }
+}
