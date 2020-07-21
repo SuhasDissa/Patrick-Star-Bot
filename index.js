@@ -6,6 +6,16 @@ const bot = new Client();
 const request = require("request");
 const values = require("./variables.js");
 
+const express = require('express');
+const app = express();
+
+// The public folder will have all the styles and scripts 
+//app.use(express.static('public'));
+
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/views/index.html");
+});
+
 const prefix = ".";
 var fs = require("fs");
 
