@@ -6,16 +6,6 @@ const bot = new Client();
 const request = require("request");
 const values = require("./variables.js");
 
-const express = require('express');
-const app = express();
-
-// The public folder will have all the styles and scripts 
-//app.use(express.static('public'));
-
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/views/index.html");
-});
-
 const prefix = ".";
 var fs = require("fs");
 
@@ -173,27 +163,9 @@ bot.on("message", msg => {
       msg.channel.send("Go fuck yourself!");
       break;
     case "meme":
-      try {
-        const options = {
-          method: "GET",
-          url: "http://alpha-meme-maker.herokuapp.com/0"
-        };
-
-        request(options, (error, response, body) => {
-          if (!error && response.statusCode == 200) {
-            const meme = JSON.parse(body);
-            const random = getRndInteger(0, meme.data.length);
-
-            const memeImg = new MessageAttachment(meme.data[random].image);
-            msg.channel.send(memeImg);
-            //msg.channel.send();
-          }
-        });
-      } catch (error) {
-        console.log(error);
-      }
+      var y = getRndInteger(0, values.riddle.length);
+      msg.channel.send(values.memes[y]);
       break;
-
     case "corona":
       const url = "https://corona.lmao.ninja/v3/covid-19/all";
       const localurl = "https://hpb.health.gov.lk/api/get-current-statistical";
