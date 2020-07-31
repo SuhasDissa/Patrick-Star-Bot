@@ -5,6 +5,7 @@ const bot = new Client();
 
 const request = require("request");
 const values = require("./variables.js");
+const cheerio = require("cheerio");
 
 const prefix = ".";
 var fs = require("fs");
@@ -322,5 +323,12 @@ bot.on("message", msg => {
       break;
   }
 });
+
+function image(message){
+  var options = {
+    url: "http://results.dogpile.com/serp?qc=images&q="+ "minecraft",
+    methu
+  }
+}
 
 bot.login(token);
