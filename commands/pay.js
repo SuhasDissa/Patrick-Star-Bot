@@ -3,7 +3,7 @@ const money = require("../money.json");
 
 module.exports.run = async (bot, message, args) => {
 
-    let user = message.mentions.users.first() || bot.users.get(args[0]);
+    let user = message.mentions.users.first() || bot.users.cache.get(args[0]);
     
     if(!user) return message.reply("Tell me a user you dumb!");
 
@@ -15,13 +15,13 @@ module.exports.run = async (bot, message, args) => {
 
 if(!money[user.id]){
 	money[user.id] ={
-		name: bot.users.get(user.id).tag,
+		name: bot.users.cache.get(user.id).tag,
 		money: parseInt(args[1])
     }
     
     money[message.author.id].money -= parseInt(args[1]);
 
-    fs.writeFile("../money.json", JSON.stringify(money), (error) =>{
+    fs.writeFile("./money.json", JSON.stringify(money), (error) =>{
         if(error) console.log(error);
         });
 }else{
@@ -29,12 +29,12 @@ if(!money[user.id]){
 
     money[message.author.id].money -= parseInt(args[1]);
 
-    fs.writeFile("../money.json", JSON.stringify(money), (error) =>{
+    fs.writeFile("./money.json", JSON.stringify(money), (error) =>{
         if(error) console.log(error);
         });
 }
 
-return message.channel.send(`${message.author.username} payed ${args[1]} coins to ${bot.users.get(user.id).username}.`);
+return message.channel.send(`${message.author.username} payed ${args[1]} coins to ${bot.users.cache.get(user.id).username}.`);
 	
 }
 

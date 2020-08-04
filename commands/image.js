@@ -8,7 +8,7 @@ function getRndInteger(min, max) {
 module.exports.run = async (bot, msg, args) => {
 
 
-    if (args[1] == "geeth") {
+    if (args[0] == "geeth") {
         const geeth = new MessageAttachment(
             "https://s7.gifyu.com/images/geeth.jpg"
         );
@@ -17,7 +17,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
 
-    } else if (args[1] == "sithum") {
+    } else if (args[0] == "sithum") {
         const sithum = new MessageAttachment(
             "https://s7.gifyu.com/images/sithum.jpg"
         );
@@ -28,7 +28,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
 
-    } else if (args[1] == "random") {
+    } else if (args[0] == "random") {
         var randht = getRndInteger(100, 800);
         var randwdth = getRndInteger(100, 800);
         var link = "https://picsum.photos/" + randht + "/" + randwdth;
@@ -38,7 +38,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
 
-    } else if (args[1] == "cat") {
+    } else if (args[0] == "cat") {
         var randht = getRndInteger(100, 800);
         var randwdth = getRndInteger(100, 800);
         var link = "http://placekitten.com/" + randht + "/" + randwdth;
@@ -47,7 +47,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
 
-    } else if (args[1] == "female") {
+    } else if (args[0] == "female") {
         try {
             const options = {
                 method: "GET",
@@ -73,7 +73,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
 
-    } else if (args[1] == "male") {
+    } else if (args[0] == "male") {
         try {
             const options = {
                 method: "GET",

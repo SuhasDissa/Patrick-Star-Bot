@@ -1,6 +1,7 @@
 const token = process.env.token;
 
 const { Client, MessageAttachment, MessageEmbed } = require("discord.js");
+const Discord = require("discord.js")
 const bot = new Client();
 
 const request = require("request");
@@ -24,7 +25,7 @@ fs.readdir("./commands/", (err, files) => {
   }
 
   jsfile.forEach((f) =>{
-      let propd = require(`./commands/${f}`);
+      let props = require(`./commands/${f}`);
       console.log(`${f} loaded`);
       bot.commands.set(props.help.name , props);
 
@@ -39,16 +40,16 @@ function getRndInteger(min, max) {
 }
 
 bot.on("ready", () => {
-  console.log(`this bot is online on ${bot.guilds.size} server(s).`);
+  console.log(`this bot is online on ${bot.guilds.cache.size} server(s).`);
 });
 
 bot.on("message", async message =>{
-  if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
 
   let args = message.content.slice(prefix.length).trim().split(" ");
   let cmd = args.shift().toLowerCase();
   let command;
-  let commandfie = bot.commands.get(cmd.slice(prefix.length));
+  let commandfile = bot.commands.get(cmd.slice(prefix.length));
 
   if (commandfile) commandfile.run(bot, message, args);
 
