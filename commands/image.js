@@ -1,12 +1,48 @@
 const request = require("request");
+const cheerio = require("cheerio");
 const {MessageAttachment} = require("discord.js");
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+function image(message, search) {
+
+    const options = {
+        url: "http://results.dogpile.com/serp?qc=images&q=" + search,
+        method: "GET",
+        headers: {
+            "Accept": "text/html",
+            "User-Agent": "Chrome"
+        }
+    };
+    request(options, function(error, response, responseBody) {
+        if (error) {
+            return;
+        }
+
+        $ = cheerio.load(responseBody);
+
+        const links = $(".image a.link");
+
+        const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
+        if (!urls.length) {
+            return;
+        }
+
+        return message.channel.send( urls[0] );
+    });
+
+}
 
 module.exports.run = async (bot, msg, args) => {
 
+  if(args.length<1){
+    return msg.channel.send(
+            "I Couldn't find a matching image. So I'll send you this"
+        );
+        const avatar = new MessageAttachment(msg.author.displayAvatarURL());
+        return msg.channel.send(avatar);
+  }
 
     if (args[0] == "geeth") {
         const geeth = new MessageAttachment(
@@ -98,12 +134,9 @@ module.exports.run = async (bot, msg, args) => {
 
 
 
-    } else {
-        msg.channel.send(
-            "I Couldn't find a matching image. So I'll send you this"
-        );
-        const avatar = new MessageAttachment(msg.author.displayAvatarURL());
-        return msg.channel.send(avatar);
+    } else {       
+      
+      image(msg,args[0]);     
     }
 
 }
