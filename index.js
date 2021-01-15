@@ -1,4 +1,4 @@
-const token = "NzI5MjMxNzg3ODA0NTkwMTUz.XxQ7Tw.h1aeVmaTXwx_CmgCwiroV8zGWeQ";
+const token = "TOKEN_HERE";
 
 const { Client, MessageAttachment, MessageEmbed } = require("discord.js");
 const Discord = require("discord.js")
