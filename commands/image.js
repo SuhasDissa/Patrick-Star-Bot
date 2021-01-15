@@ -29,7 +29,7 @@ function image(message, search) {
             return;
         }
 
-        return message.channel.send( urls[0] );
+        return message.channel.send( urls[getRndInteger(0, urls.length)] );
     });
 
 }
@@ -134,9 +134,11 @@ module.exports.run = async (bot, msg, args) => {
 
 
 
-    } else {       
+    } else {
       
-      image(msg,args[0]);     
+      var term= args.join("+");
+      
+      image(msg,term);     
     }
 
 }

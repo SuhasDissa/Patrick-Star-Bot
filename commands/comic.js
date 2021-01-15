@@ -6,7 +6,7 @@ function getRndInteger(min, max) {
 module.exports.run = async (bot, msg, args) => {
 
     try {
-        request("https://www.reddit.com/r/comics/top/.json?sort=top&t=week&limit=10", function(
+        request("https://www.reddit.com/r/comics/top/.json?sort=top&t=week&limit=500", function(
           error,
           response,
           body
