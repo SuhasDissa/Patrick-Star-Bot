@@ -1,6 +1,6 @@
 const request = require("request");
 const cheerio = require("cheerio");
-const {MessageAttachment} = require("discord.js");
+const { MessageAttachment } = require("discord.js");
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -15,7 +15,7 @@ function image(message, search) {
             "User-Agent": "Chrome"
         }
     };
-    request(options, function(error, response, responseBody) {
+    request(options, function (error, response, responseBody) {
         if (error) {
             return;
         }
@@ -29,20 +29,20 @@ function image(message, search) {
             return;
         }
 
-        return message.channel.send( urls[getRndInteger(0, urls.length)] );
+        return message.channel.send(urls[getRndInteger(0, urls.length)]);
     });
 
 }
 
 module.exports.run = async (bot, msg, args) => {
 
-  if(args.length<1){
-    return msg.channel.send(
+    if (args.length < 1) {
+        return msg.channel.send(
             "I Couldn't find a matching image. So I'll send you this"
         );
         const avatar = new MessageAttachment(msg.author.displayAvatarURL());
         return msg.channel.send(avatar);
-  }
+    }
 
     if (args[0] == "geeth") {
         const geeth = new MessageAttachment(
@@ -135,10 +135,11 @@ module.exports.run = async (bot, msg, args) => {
 
 
     } else {
-      
-      var term= args.join("+");
-      
-      image(msg,term);     
+        return msg.channel.send("this comand is disabled");
+        /*
+        var term= args.join("+");
+        
+        image(msg,term);     */
     }
 
 }
@@ -146,4 +147,4 @@ module.exports.run = async (bot, msg, args) => {
 module.exports.help = {
     name: "image",
     aliases: ["img"]
-} 
+}
