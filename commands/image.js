@@ -8,7 +8,7 @@ function getRndInteger(min, max) {
 function image(message, search) {
 
     const options = {
-        url: "http://results.dogpile.com/serp?qc=images&q=" + search,
+        url: "https://yandex.com/images/search?text=" + search,
         method: "GET",
         headers: {
             "Accept": "text/html",
@@ -22,9 +22,9 @@ function image(message, search) {
 
         $ = cheerio.load(responseBody);
 
-        const links = $(".image a.link");
+        const links = $("a.serp-item__link img.serp-item__thumb");
 
-        const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"));
+        const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("src"));
         if (!urls.length) {
             return;
         }
@@ -38,33 +38,11 @@ module.exports.run = async (bot, msg, args) => {
 
     if (args.length < 1) {
         return msg.channel.send(
-            "I Couldn't find a matching image. So I'll send you this"
+            "tell me a keyword you nigge"
         );
-        const avatar = new MessageAttachment(msg.author.displayAvatarURL());
-        return msg.channel.send(avatar);
     }
 
-    if (args[0] == "geeth") {
-        const geeth = new MessageAttachment(
-            "https://s7.gifyu.com/images/geeth.jpg"
-        );
-        return msg.channel.send(geeth);
-
-
-
-
-    } else if (args[0] == "sithum") {
-        const sithum = new MessageAttachment(
-            "https://s7.gifyu.com/images/sithum.jpg"
-        );
-        return msg.channel.send(sithum);
-
-
-
-
-
-
-    } else if (args[0] == "random") {
+    if (args[0] == "random") {
         var randht = getRndInteger(100, 800);
         var randwdth = getRndInteger(100, 800);
         var link = "https://picsum.photos/" + randht + "/" + randwdth;
@@ -135,11 +113,11 @@ module.exports.run = async (bot, msg, args) => {
 
 
     } else {
-        return msg.channel.send("this comand is disabled");
-        /*
+       // return msg.channel.send("this comand is disabled");
+        
         var term= args.join("+");
         
-        image(msg,term);     */
+        image(msg,term);
     }
 
 }
