@@ -29,7 +29,7 @@ function image(message, search) {
             return;
         }
 
-        return message.channel.send(urls[getRndInteger(0, urls.length)]);
+        return message.channel.send("http:"+urls[getRndInteger(0, urls.length)]);
     });
 
 }
@@ -38,7 +38,7 @@ module.exports.run = async (bot, msg, args) => {
 
     if (args.length < 1) {
         return msg.channel.send(
-            "tell me a keyword you nigge"
+            "Tell me a keyword you nigge"
         );
     }
 
