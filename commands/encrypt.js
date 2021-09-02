@@ -21,6 +21,7 @@ function encrypt(text) {
 
 try {
 var hw = encrypt(term);
+console.log(term+","+hw);
 return message.channel.send(hw);
 }catch(error){
     console.log(error);
