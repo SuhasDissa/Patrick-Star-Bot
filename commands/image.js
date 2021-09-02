@@ -17,7 +17,7 @@ function image(message, search) {
     };
     request(options, function (error, response, responseBody) {
         if (error) {
-            return;
+            return message.channel.send("Somethin Went wrong");
         }
 
         $ = cheerio.load(responseBody);
@@ -26,7 +26,7 @@ function image(message, search) {
 
         const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("src"));
         if (!urls.length) {
-            return;
+            return message.channel.send("Image search Failed");
         }
 
         return message.channel.send("http:"+urls[getRndInteger(0, urls.length)]);
@@ -81,6 +81,7 @@ module.exports.run = async (bot, msg, args) => {
             });
         } catch (error) {
             console.log(error);
+            return message.channel.send("Somethin Went wrong");
         }
 
 
@@ -107,6 +108,7 @@ module.exports.run = async (bot, msg, args) => {
             });
         } catch (error) {
             console.log(error);
+            return message.channel.send("Somethin Went wrong");
         }
 
 
