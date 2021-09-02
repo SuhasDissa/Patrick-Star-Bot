@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const algorithm = 'aes-256-cbc';
-const key = 'okboomer';
+const key = '787ff81611b84c9ab2a55aa45e3c1d3e824e3ff583b0cb75c20b8947a4130d16';
 const iv = crypto.randomBytes(16);
 
 module.exports.run = async (bot, message, args) => {   
@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
 function decrypt(text) {
  let iv = Buffer.from(text.iv, 'hex');
  let encryptedText = Buffer.from(text.encryptedData, 'hex');
- let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(key), iv);
+ let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(key.substr(0, 32)), iv);
  let decrypted = decipher.update(encryptedText);
  decrypted = Buffer.concat([decrypted, decipher.final()]);
  return decrypted.toString();
