@@ -22,9 +22,9 @@ function decrypt(text) {
 }
 
 try {
-var hw = decrypt(term);
+var hw = decrypt(String(term));
 console.log(term+","+hw);
-return message.channel.send(hw);
+return message.channel.send(String(hw));
 }catch(error){
     console.log(error);
     return message.channel.send("Somethin Went wrong");
