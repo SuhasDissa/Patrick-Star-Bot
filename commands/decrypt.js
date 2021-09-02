@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
     }
     var term= args.join(" ");
 try {
-var hw = atob(term);
+var hw = Buffer.from(term, 'base64').toString()
 return message.channel.send(hw);
 }catch(error){
     console.log(error);

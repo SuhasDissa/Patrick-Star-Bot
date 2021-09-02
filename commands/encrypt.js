@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     var term= args.join(" ");
 
 try {
-var hw = btoa(term);
+var hw = Buffer.from(term).toString('base64');
 return message.channel.send(hw);
 }catch(error){
     console.log(error);
