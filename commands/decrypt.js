@@ -13,9 +13,8 @@ module.exports.run = async (bot, message, args) => {
     var term= args.join(" ");
 
 function decrypt(text) {
- let encryptedText = Buffer.from(text.encryptedData, 'hex');
  let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(key.substr(0, 32)), iv);
- let decrypted = decipher.update(encryptedText);
+ let decrypted = decipher.update(text);
  decrypted = Buffer.concat([decrypted, decipher.final()]);
  return decrypted.toString();
 }
