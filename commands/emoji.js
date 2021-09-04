@@ -28,14 +28,14 @@ module.exports.run = async (bot, msg, args) => {
                     const comic = JSON.parse(body);
 
                     comic.forEach(fillArray);
-
+                    var listedmessage = '';
                     for (i = 0; i < namelist.length; i++) {
                         txtValue = namelist[i];
                         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-
-                            return msg.channel.send(namelist[i] + ": /n" + urllist[i]);
+                        listedmessage = namelist[i] + ": \n" + urllist[i]
                         }
                     }
+                    return msg.channel.send(listedmessage);
                 }
             });
         } catch (error) {
