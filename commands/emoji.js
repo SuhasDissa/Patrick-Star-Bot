@@ -32,7 +32,8 @@ module.exports.run = async (bot, msg, args) => {
                     for (i = 0; i < namelist.length; i++) {
                         txtValue = namelist[i];
                         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        listedmessage = namelist[i] + ": \n" + urllist[i]
+                            listedmessage = listedmessage + namelist[i] + ": \n" + urllist[i] + "\n"
+                            
                         }
                     }
                     return msg.channel.send(listedmessage);
@@ -43,12 +44,14 @@ module.exports.run = async (bot, msg, args) => {
         }
     } else {
         try {
+            var listedmessage = '';
             for (i = 0; i < namelist.length; i++) {
                 txtValue = namelist[i];
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    return msg.channel.send(namelist[i] + ": /n" + urllist[i]);
+                    listedmessage = listedmessage + namelist[i] + ": \n" + urllist[i] + "\n"
                 }
             }
+            return msg.channel.send(listedmessage);
         } catch (error) {
 
         }
