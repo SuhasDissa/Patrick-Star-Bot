@@ -1,9 +1,5 @@
-const values = require("../variables.js");
+const request = require("request");
 
-
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-}
 var namelist = [];
 var urllist = [];
 
