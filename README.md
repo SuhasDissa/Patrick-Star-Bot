@@ -1,5 +1,5 @@
 
-# Discord Bot Sira (aka Hairless ASSHOLE)
+# Discord Bot Sira
 
 A simple yet powerful Bot to spend your time with
 
