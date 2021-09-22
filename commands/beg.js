@@ -1,4 +1,5 @@
 const fs = require("fs");
+const request = require("request");
 //const money = require("../money.json");
 const values = require("../variables.js");
 function getRndInteger(min, max) {
