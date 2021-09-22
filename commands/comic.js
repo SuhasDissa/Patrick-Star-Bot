@@ -3,7 +3,7 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 comiclist = [];
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
 
   if (!comiclist.length) {
@@ -19,7 +19,7 @@ module.exports.run = async (bot, msg, args) => {
           for (x = 0; x < comic.data.children.length; x++) {
             comiclist[x] = comic.data.children[x].data.url
           }
-          return msg.channel.send(comic.data.children[i].data.url);
+          return message.channel.send(comic.data.children[i].data.url);
         }
       });
     } catch (error) {
@@ -27,7 +27,7 @@ module.exports.run = async (bot, msg, args) => {
     }
   } else {
     var x = getRndInteger(0, comiclist.length);
-    return msg.channel.send(comiclist[x]);
+    return message.channel.send(comiclist[x]);
   }
 
   /*
@@ -40,7 +40,7 @@ module.exports.run = async (bot, msg, args) => {
             if (!error && response.statusCode == 200) {
               const comic= JSON.parse(body);
               var i = getRndInteger(0,comic.data.children.length);
-              return msg.channel.send(comic.data.children[i].data.url);
+              return message.channel.send(comic.data.children[i].data.url);
             }
           });
         } catch (error) {

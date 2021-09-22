@@ -1,6 +1,6 @@
 const request = require("request");
 const { MessageEmbed } = require("discord.js");
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
   const url = "https://corona.lmao.ninja/v3/covid-19/all";
   const localurl = "https://hpb.health.gov.lk/api/get-current-statistical";
 
@@ -19,7 +19,7 @@ module.exports.run = async (bot, msg, args) => {
         { name: "♻️ Recovered", value: `${covid.recovered}` },
         { name: "⚰️ Dead", value: `${covid.deaths}` }
       );
-    return msg.channel.send(coronaEmbedWorld);
+    return message.channel.send(coronaEmbedWorld);
   });
 
   request(localurl, function(error, responselk, bodylk) {
@@ -44,7 +44,7 @@ module.exports.run = async (bot, msg, args) => {
         { name: "⚰️ Dead", value: `${covidlk.data.local_deaths}` },
         { name: "➕ New Cases", value: `${covidlk.data.local_new_cases}` }
       );
-    return msg.channel.send(coronaEmbedLk);
+    return message.channel.send(coronaEmbedLk);
   });
 };
 

@@ -1,6 +1,6 @@
 const request = require("request");
 
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
     try {
         request("https://sv443.net/jokeapi/v2/joke/Any?type=single", function(
@@ -10,7 +10,7 @@ module.exports.run = async (bot, msg, args) => {
         ) {
           if (!error && response.statusCode == 200) {
             const randjoke = JSON.parse(bodyjoke);
-            return msg.channel.send(randjoke.joke);
+            return message.channel.send(randjoke.joke);
           }
         });
       } catch (error) {

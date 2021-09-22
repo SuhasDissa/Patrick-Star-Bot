@@ -1,6 +1,6 @@
 const {MessageEmbed } = require("discord.js");
 
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
     const helpEmbed = new MessageEmbed()
     .setColor("#ff7936")
     .setTitle("HELP")
@@ -15,7 +15,7 @@ module.exports.run = async (bot, msg, args) => {
       { name: "Currency commands", value: "beg, bal" },
       { name: "Other commands", value: "fuck, yousuck, shit, do" }
     );
-  return msg.channel.send(helpEmbed);
+  return message.channel.send(helpEmbed);
 
 }
 

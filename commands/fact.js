@@ -1,7 +1,7 @@
 const request = require("request");
 const { MessageEmbed } = require("discord.js");
 
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
     const urlfact = "https://uselessfacts.jsph.pl/random.json?language=en";
 
@@ -12,7 +12,7 @@ module.exports.run = async (bot, msg, args) => {
           .setColor("#ff7936")
           .setTitle("Useless Fact")
           .setDescription(fact.text);
-        return msg.channel.send(factEmbed);
+        return message.channel.send(factEmbed);
       });
 
 

@@ -1,7 +1,7 @@
 module.exports.run = async (bot, message, args) => {   
 
     if (args.length < 1) {
-        return msg.channel.send(
+        return message.channel.send(
             "Gimme a text you nigge"
         );
     }

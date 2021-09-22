@@ -5,7 +5,7 @@ function getRndInteger(min, max) {
 
 memelist = [];
 
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
 
   if (!memelist.length) {
@@ -21,7 +21,7 @@ module.exports.run = async (bot, msg, args) => {
           for (x = 0; x < comic.data.children.length; x++) {
             memelist[x] = comic.data.children[x].data.url
           }
-          return msg.channel.send(comic.data.children[i].data.url);
+          return message.channel.send(comic.data.children[i].data.url);
         }
       });
     } catch (error) {
@@ -29,7 +29,7 @@ module.exports.run = async (bot, msg, args) => {
     }
   } else {
     var x = getRndInteger(0, memelist.length);
-    return msg.channel.send(memelist[x]);
+    return message.channel.send(memelist[x]);
   }
 
 
@@ -42,7 +42,7 @@ module.exports.run = async (bot, msg, args) => {
          if (!error && response.statusCode == 200) {
            const comic= JSON.parse(body);
            var i = getRndInteger(0,comic.data.children.length);
-           return msg.channel.send(comic.data.children[i].data.url);
+           return message.channel.send(comic.data.children[i].data.url);
          }
        });
      } catch (error) {

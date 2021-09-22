@@ -36,10 +36,10 @@ function image(message, search) {
 
 }
 
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
     if (args.length < 1) {
-        return msg.channel.send(
+        return message.channel.send(
             "Tell me a keyword you nigge"
         );
     }
@@ -48,7 +48,7 @@ module.exports.run = async (bot, msg, args) => {
         var randht = getRndInteger(100, 800);
         var randwdth = getRndInteger(100, 800);
         var link = "https://picsum.photos/" + randht + "/" + randwdth;
-        return msg.channel.send(link);
+        return message.channel.send(link);
 
 
 
@@ -58,7 +58,7 @@ module.exports.run = async (bot, msg, args) => {
         var randht = getRndInteger(100, 800);
         var randwdth = getRndInteger(100, 800);
         var link = "http://placekitten.com/" + randht + "/" + randwdth;
-        return msg.channel.send(link);
+        return message.channel.send(link);
 
 
 
@@ -77,8 +77,8 @@ module.exports.run = async (bot, msg, args) => {
 
                     const imgurl = new MessageAttachment(image.faces[0].urls[4]["512"]);
                     // console.log(body);
-                    return msg.channel.send(imgurl);
-                    //msg.channel.send();
+                    return message.channel.send(imgurl);
+                    //message.channel.send();
                 }
             });
         } catch (error) {
@@ -104,8 +104,8 @@ module.exports.run = async (bot, msg, args) => {
 
                     const imgurl = new MessageAttachment(image.faces[0].urls[4]["512"]);
                     // console.log(body);
-                    return msg.channel.send(imgurl);
-                    //msg.channel.send();
+                    return message.channel.send(imgurl);
+                    //message.channel.send();
                 }
             });
         } catch (error) {
@@ -117,7 +117,7 @@ module.exports.run = async (bot, msg, args) => {
 
 
     } else {
-        // return msg.channel.send("this comand is disabled");
+        // return message.channel.send("this comand is disabled");
         var user = message.author;
         if (!money[user.id]) {
             money[user.id] = {
@@ -139,7 +139,7 @@ module.exports.run = async (bot, msg, args) => {
         }
         var term = args.join("+");
 
-        image(msg, term);
+        image(message, term);
     }
 
 }

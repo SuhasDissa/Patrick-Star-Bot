@@ -7,10 +7,10 @@ function fillArray(comic) {
     namelist.push(comic.title);
     urllist.push(comic.image);
 }
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
     if (args.length < 1) {
-        return msg.channel.send(
+        return message.channel.send(
             "Tell me a keyword you nigge"
         );
     }
@@ -36,7 +36,7 @@ module.exports.run = async (bot, msg, args) => {
                             
                         }
                     }
-                    return msg.channel.send(listedmessage);
+                    return message.channel.send(listedmessage);
                 }
             });
         } catch (error) {
@@ -51,7 +51,7 @@ module.exports.run = async (bot, msg, args) => {
                     listedmessage = listedmessage + namelist[i] + ": \n" + urllist[i] + "\n"
                 }
             }
-            return msg.channel.send(listedmessage);
+            return message.channel.send(listedmessage);
         } catch (error) {
 
         }

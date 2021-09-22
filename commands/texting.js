@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const Canvas = require('canvas');
 
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
   if(!args[0]) return;
   
@@ -27,7 +27,7 @@ module.exports.run = async (bot, msg, args) => {
   
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'Love.png');
 
-	msg.channel.send(attachment);
+	message.channel.send(attachment);
 }
 
 module.exports.help = {

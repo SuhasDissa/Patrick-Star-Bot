@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const Canvas = require('canvas');
 
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
   if(!args[0]) return;
   const canvas = Canvas.createCanvas(778, 736);
@@ -35,7 +35,7 @@ if(args[0].startsWith('http')){
 }
 	const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'Exam.png');
 
-	msg.channel.send(attachment);
+	message.channel.send(attachment);
   
 }
 

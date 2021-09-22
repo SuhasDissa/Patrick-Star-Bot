@@ -1,7 +1,7 @@
 const request = require("request");
 const { MessageEmbed } = require("discord.js");
 
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
     const urlcurrency =
         "https://currencyapi.net/api/v1/rates?key=Yfs40piZmxakJzJ0zrSspOSSEJjij4r89HGZ&limit=LKR";
@@ -13,7 +13,7 @@ module.exports.run = async (bot, msg, args) => {
             .setColor("#ff7936")
             .setTitle("Currency Updates")
             .setDescription(`1 USD = ${currency.rates.LKR} LKR`);
-        return msg.channel.send(RatesEmbed);
+        return message.channel.send(RatesEmbed);
     });
 
 }

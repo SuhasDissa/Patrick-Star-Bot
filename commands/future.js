@@ -5,10 +5,10 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
   
-module.exports.run = async (bot, msg, args) => {
+module.exports.run = async (bot, message, args) => {
 
     var i = getRndInteger(0, values.future.length);
-    return msg.channel.send(values.future[i]);
+    return message.channel.send(values.future[i]);
 
 }
 
