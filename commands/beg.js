@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
       var coins = randcoins;
 
       try {
-        request("https://patrick-brain.glitch.me/money", function (
+        request("https://patrick-brain.herokuapp.com/money", function (
           error,
           response,
           body
@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
       if (money[user.id]) {
         coins = money[user.id].money + coins;
       }
-      post_url = "https://patrick-brain.glitch.me/save-money?user=" + bot.users.cache.get(user.id).tag + "&amount=" + coins
+      post_url = "https://patrick-brain.herokuapp.com/save-money?user=" + bot.users.cache.get(user.id).tag + "&amount=" + coins
       /*money[user.id] = {
         name: bot.users.cache.get(user.id).tag,
         money: coins
