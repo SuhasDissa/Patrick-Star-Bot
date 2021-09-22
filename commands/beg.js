@@ -10,8 +10,8 @@ module.exports.run = async (bot, message, args) => {
 
 
   var randname = getRndInteger(0, values.name.length);
-  var option = getRndInteger(1, 4);
-
+  //var option = getRndInteger(1, 4);
+  var option = 1;
   if (!args[0]) {
     var user = message.author;
   } else {
@@ -43,7 +43,7 @@ module.exports.run = async (bot, message, args) => {
       if (money[user.id]) {
         coins = parseInt(money[user.id].money) + coins;
       }
-      post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&username=" + bot.users.cache.get(user.id).username + "&amount=" + coins
+      post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&amount=" + coins
       /*money[user.id] = {
         name: bot.users.cache.get(user.id).tag,
         money: coins
