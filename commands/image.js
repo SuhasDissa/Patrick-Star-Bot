@@ -1,6 +1,8 @@
 const request = require("request");
 const cheerio = require("cheerio");
 const { MessageAttachment } = require("discord.js");
+const fs = require("fs");
+const money = require("../money.json");
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
@@ -29,7 +31,7 @@ function image(message, search) {
             return message.channel.send("Image search Failed");
         }
 
-        return message.channel.send("http:"+urls[getRndInteger(0, urls.length)]);
+        return message.channel.send("http:" + urls[getRndInteger(0, urls.length)]);
     });
 
 }
@@ -115,11 +117,29 @@ module.exports.run = async (bot, msg, args) => {
 
 
     } else {
-       // return msg.channel.send("this comand is disabled");
+        // return msg.channel.send("this comand is disabled");
+        var user = message.author;
+        if (!money[user.id]) {
+            money[user.id] = {
+                name: bot.users.cache.get(user.id).tag,
+                money: 0
+            };
+            fs.writeFile("./money.json", JSON.stringify(money), error => {
+                if (error) console.log(error);
+            });
+        }
+        if(money[user.id].money< 10000){
+            return message.channel.send("You dont have enough money to search images. You need atleast 10,000 coins");
+        }else {
+            money[user.id].money -= 10000;
         
-        var term= args.join("+");
-        
-        image(msg,term);
+            fs.writeFile("./money.json", JSON.stringify(money), (error) =>{
+            if(error) console.log(error);
+            });
+        }
+        var term = args.join("+");
+
+        image(msg, term);
     }
 
 }
