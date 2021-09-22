@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, args) => {
       }
 
       if (money[user.id]) {
-        coins = money[user.id].money + coins;
+        coins = parseInt(money[user.id].money) + coins;
       }
       post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&username=" + bot.users.cache.get(user.id).username + "&amount=" + coins
       /*money[user.id] = {

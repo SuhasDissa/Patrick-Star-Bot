@@ -207,8 +207,6 @@ const name = [
   "That fart you are holding in",
   "Bill Bates",
   "Donald Trump",
-  "Mahinda Rajapaksha",
-  "Gotabaya Rajapaksha",
   "Nandimithra",
   "A tiktok star",
   "Your mother",
@@ -219,9 +217,6 @@ const name = [
   "An idiot",
   "Homer Simpson",
   "A gay",
-  "Gadola",
-  "Sanda",
-  "Mutti",
   "A pornstar",
   "Iron man",
   "Spider man",
@@ -231,8 +226,6 @@ const name = [
   "Barack Obama",
   "Super man",
   "Wonder woman",
-  "අඹ සීයා",
-  "සෝරත පොඩිසාදු",
   "Your ex"
 ];
 
