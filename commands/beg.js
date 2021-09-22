@@ -37,12 +37,13 @@ module.exports.run = async (bot, message, args) => {
         });
       } catch (error) {
         console.log(error);
+        return;
       }
 
       if (money[user.id]) {
         coins = money[user.id].money + coins;
       }
-      post_url = "https://patrick-brain.herokuapp.com/save-money?user=" + bot.users.cache.get(user.id).tag + "&amount=" + coins
+      post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&username=" + bot.users.cache.get(user.id).username + "&amount=" + coins
       /*money[user.id] = {
         name: bot.users.cache.get(user.id).tag,
         money: coins
