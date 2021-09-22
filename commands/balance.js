@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
        if (error) console.log(error);
      });*/
 
-    post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&username=" + bot.users.cache.get(user.id).username + "&amount=0"
+    post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&amount=0"
 
     request.post(post_url,
       function (error, response, body) {
