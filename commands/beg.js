@@ -4,7 +4,7 @@ const values = require("../variables.js");
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-const money;
+var money = '';
 module.exports.run = async (bot, message, args) => {
 
 
