@@ -24,23 +24,24 @@ module.exports.run = async (bot, message, args) => {
       var randcoins = getRndInteger(2, 1000);
       var coins = randcoins;
 
-     /* try {
-        request("https://patrick-brain.herokuapp.com/money", function (
-          error,
-          response,
-          body
-        ) {
-          if (!error && response.statusCode == 200) {
+      /* try {
+         request("https://patrick-brain.herokuapp.com/money", function (
+           error,
+           response,
+           body
+         ) {
+           if (!error && response.statusCode == 200) {
+ 
+             money = JSON.parse(body);
+           }
+         });
+       } catch (error) {
+         console.log(error);
+         return;
+       }*/
 
-            money = JSON.parse(body);
-          }
-        });
-      } catch (error) {
-        console.log(error);
-        return;
-      }*/
-
-      if (money[user.id]) {
+      if (!money[user.id]) {
+      } else {
         coins = parseInt(money[user.id].money) + coins;
       }
       //post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&amount=" + coins
@@ -52,10 +53,10 @@ module.exports.run = async (bot, message, args) => {
         if (error) console.log(error);
       });
 
-     /* request.post(post_url,
-        function (error, response, body) {
-          console.log(body);
-        });*/
+      /* request.post(post_url,
+         function (error, response, body) {
+           console.log(body);
+         });*/
 
       return message.reply(values.name[randname] + " gave you " + coins + " coins.");
 
