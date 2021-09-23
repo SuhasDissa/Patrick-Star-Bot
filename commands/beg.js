@@ -1,11 +1,11 @@
 const fs = require("fs");
-const request = require("request");
-//const money = require("../money.json");
+//const request = require("request");
+const money = require("../money.json");
 const values = require("../variables.js");
 function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-var money = '';
+//var money = '';
 module.exports.run = async (bot, message, args) => {
 
 
@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
       var randcoins = getRndInteger(2, 1000);
       var coins = randcoins;
 
-      try {
+     /* try {
         request("https://patrick-brain.herokuapp.com/money", function (
           error,
           response,
@@ -38,24 +38,24 @@ module.exports.run = async (bot, message, args) => {
       } catch (error) {
         console.log(error);
         return;
-      }
+      }*/
 
       if (money[user.id]) {
         coins = parseInt(money[user.id].money) + coins;
       }
-      post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&amount=" + coins
-      /*money[user.id] = {
+      //post_url = "https://patrick-brain.herokuapp.com/save-money?userid=" + bot.users.cache.get(user.id) + "&amount=" + coins
+      money[user.id] = {
         name: bot.users.cache.get(user.id).tag,
         money: coins
-      };*/
-      /*fs.writeFile("./money.json", JSON.stringify(money), error => {
+      };
+      fs.writeFile("./money.json", JSON.stringify(money), error => {
         if (error) console.log(error);
-      });*/
+      });
 
-      request.post(post_url,
+     /* request.post(post_url,
         function (error, response, body) {
           console.log(body);
-        });
+        });*/
 
       return message.reply(values.name[randname] + " gave you " + coins + " coins.");
 
