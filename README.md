@@ -22,6 +22,6 @@ Use the link below to invite
     
 ## Bot website
 
-[Link](https://hairless-asshole.glitch.me/)
+[Link](https://suhasdissa.github.io/Patrick-Bot-Web/)
 
   
