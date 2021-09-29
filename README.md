@@ -1,5 +1,5 @@
 
-# Discord Bot Sira
+# Discord Bot Patrick
 
 A simple yet powerful Bot to spend your time with
 
