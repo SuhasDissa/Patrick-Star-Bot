@@ -1,5 +1,4 @@
-
-# Discord Bot Patrick
+<img src="banner.jpeg" width="100%">
 
 A simple yet powerful Bot to spend your time with
 
