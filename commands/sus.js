@@ -6,12 +6,11 @@ module.exports.run = async (bot, message, args) => {
     var url = args[0];
 
     try {
-        request(
-            {
+        request({
                 uri: url,
                 followRedirect: false,
             },
-            function (err, httpResponse) {
+            function(err, httpResponse) {
                 if (err) {
                     console.error(err)
                     return message.channel.send("Shit aint workin");

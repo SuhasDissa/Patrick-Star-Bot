@@ -1,39 +1,35 @@
 const request = require("request");
-const cheerio = require("cheerio");
-const { MessageAttachment } = require("discord.js");
-const fs = require("fs");
-const money = require("../money.json");
+const {
+    MessageAttachment
+} = require("discord.js");
+const SerpApi = require('google-search-results-nodejs');
+const search = new SerpApi.GoogleSearch(process.env.SERP_TOKEN);
+
 
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
 function image(message, search) {
-
-    const options = {
-        url: "https://yandex.com/images/search?text=" + search,
-        method: "GET",
-        headers: {
-            "Accept": "text/html",
-            "User-Agent": "Chrome"
-        }
+    const params = {
+        engine: "google",
+        q: search,
+        location: "Austin, Texas, United States",
+        google_domain: "google.com",
+        gl: "us",
+        hl: "en",
+        device: "desktop",
+        num: "10",
+        tbm: "isch"
     };
-    request(options, function (error, response, responseBody) {
-        if (error) {
-            return message.channel.send("Somethin Went wrong");
-        }
 
-        $ = cheerio.load(responseBody);
-
-        const links = $("a.serp-item__link img.serp-item__thumb");
-
-        const urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("src"));
-        if (!urls.length) {
-            return message.channel.send("Image search Failed");
-        }
-
-        return message.channel.send("http:" + urls[getRndInteger(0, urls.length)]);
-    });
-
+    const sendmsg = function(data) {
+        console.log(data);
+        var urls = data.images_results
+        var url = urls[getRndInteger(0, urls.length)].original;
+        return message.channel.send(url);
+    };
+    search.json(params, sendmsg);
 }
 
 module.exports.run = async (bot, message, args) => {
@@ -67,8 +63,7 @@ module.exports.run = async (bot, message, args) => {
         try {
             const options = {
                 method: "GET",
-                url:
-                    "https://api.generated.photos/api/v1/faces?per_page=1&gender=female&order_by=random&api_key=Yh_pBa9PvRluKewjJk68iA"
+                url: "https://api.generated.photos/api/v1/faces?per_page=1&gender=female&order_by=random&api_key=Yh_pBa9PvRluKewjJk68iA"
             };
 
             request(options, (error, response, body) => {
@@ -76,9 +71,7 @@ module.exports.run = async (bot, message, args) => {
                     const image = JSON.parse(body);
 
                     const imgurl = new MessageAttachment(image.faces[0].urls[4]["512"]);
-                    // console.log(body);
                     return message.channel.send(imgurl);
-                    //message.channel.send();
                 }
             });
         } catch (error) {
@@ -94,8 +87,7 @@ module.exports.run = async (bot, message, args) => {
         try {
             const options = {
                 method: "GET",
-                url:
-                    "https://api.generated.photos/api/v1/faces?per_page=1&gender=male&order_by=random&api_key=Yh_pBa9PvRluKewjJk68iA"
+                url: "https://api.generated.photos/api/v1/faces?per_page=1&gender=male&order_by=random&api_key=Yh_pBa9PvRluKewjJk68iA"
             };
 
             request(options, (error, response, body) => {
@@ -103,9 +95,7 @@ module.exports.run = async (bot, message, args) => {
                     const image = JSON.parse(body);
 
                     const imgurl = new MessageAttachment(image.faces[0].urls[4]["512"]);
-                    // console.log(body);
                     return message.channel.send(imgurl);
-                    //message.channel.send();
                 }
             });
         } catch (error) {
@@ -117,28 +107,7 @@ module.exports.run = async (bot, message, args) => {
 
 
     } else {
-        // return message.channel.send("this comand is disabled");
-        var user = message.author;
-        if (!money[user.id]) {
-            money[user.id] = {
-                name: bot.users.cache.get(user.id).tag,
-                money: 0
-            };
-            fs.writeFile("./money.json", JSON.stringify(money), error => {
-                if (error) console.log(error);
-            });
-        }
-        if(money[user.id].money< 10000){
-            return message.channel.send("You dont have enough money to search images. You need atleast 10,000 coins");
-        }else {
-            money[user.id].money -= 10000;
-        
-            fs.writeFile("./money.json", JSON.stringify(money), (error) =>{
-            if(error) console.log(error);
-            });
-        }
-        var term = args.join("+");
-
+        var term = args.join(" ");
         image(message, term);
     }
 

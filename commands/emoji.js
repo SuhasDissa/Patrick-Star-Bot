@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
 
     if (!namelist.length) {
         try {
-            request("http://emoji.gg/api/", function (
+            request("http://emoji.gg/api/", function(
                 error,
                 response,
                 body
@@ -33,7 +33,7 @@ module.exports.run = async (bot, message, args) => {
                         txtValue = namelist[i];
                         if (txtValue.toUpperCase().indexOf(filter) > -1) {
                             listedmessage = listedmessage + namelist[i] + ": \n" + urllist[i] + "\n"
-                            
+
                         }
                     }
                     return message.channel.send(listedmessage);

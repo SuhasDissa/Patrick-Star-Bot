@@ -1,12 +1,14 @@
 const request = require("request");
-const { MessageEmbed } = require("discord.js");
+const {
+    MessageEmbed
+} = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
     const urlcurrency =
         "https://currencyapi.net/api/v1/rates?key=Yfs40piZmxakJzJ0zrSspOSSEJjij4r89HGZ&limit=LKR";
 
-    request(urlcurrency, function (err, response, body) {
+    request(urlcurrency, function(err, response, body) {
         let currency = JSON.parse(body);
 
         const RatesEmbed = new MessageEmbed()
@@ -21,4 +23,4 @@ module.exports.run = async (bot, message, args) => {
 module.exports.help = {
     name: "exchangerates",
     aliases: ["rates", "currencyrates"]
-} 
+}
